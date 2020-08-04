@@ -15,6 +15,27 @@
     <%= f.email_field :email, autofocus: true, class: "email" %>
   </div>
 
+  <!-- 以下住所用のフォームを記述 -->
+
+  <div class="field">
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+  </div>
+  <div class="field">
+    <%= f.label :prefecture_code %><br />
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address_city %><br />
+    <%= f.text_field :address_city, autofocus: true, autocomplete: "address_city" %>
+  </div>
+  <div class="field">
+    <%= f.label :address_street %><br />
+    <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street" %>
+  </div>
+  
+  <!-- ここまで -->
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

@@ -35,6 +35,7 @@ class User < ApplicationRecord
   end
 
 
+  # 検索機能
   def User.search(word,how_method)
     if how_method == "forward_match"
       User.where("name LIKE ?","#{word}%")
@@ -48,6 +49,21 @@ class User < ApplicationRecord
       @search = User.all
     end
   end
+
+
+  # prefecture_codeからprefecture_nameに変換するメソッドをモデルに書いておきます。
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecure_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+
 
   attachment :profile_image, destroy: false
 
