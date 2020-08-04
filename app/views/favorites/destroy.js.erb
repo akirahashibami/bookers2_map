@@ -1,0 +1,6 @@
+$("#like-<%= @book.id %>").html("<%= j(render partial: 'books/favorite', locals: { book: @book }) %>");
+// remote: true で送信された値をFavoriteCotollerで受け取り、「いいね」を登録、または取り消します。
+// createアクションやdestroyアクションではビューを作成していないので、
+// 普通はリダイレクト処理でページに遷移させますが、
+// remote: trueでjavascript形式のリクエストを送信しているため、
+// create.js.erb/destroy.js.erbファイルを作成し、部分的な更新をします。

@@ -1,0 +1,24 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ol{
+  margin-top: 30px;
+  padding-left: 0;
+
+  .user-comments{
+    width: 100%;
+    display: inline-flex;
+    justify-content: flex-start;
+
+    .image{
+      display: flex;
+      flex-direction: column;
+    }
+
+    div{
+      width: 20%;
+    }
+  }
+}

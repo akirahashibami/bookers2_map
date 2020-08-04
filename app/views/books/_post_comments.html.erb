@@ -1,0 +1,13 @@
+
+<% book_comments.each do |book_comment| %>
+<!-- コメントのテンプレ化 -->
+  <%= render 'books/comments', book_comment: book_comment %>
+<% end %>
+
+<%= form_with model: [book,book_comment], remote: true do |f| %>
+    <div class="col-sm-2">
+      <%= f.text_area :comment, rows:'5', placeholder: "コメント...", class: "text_box" %>
+      <%= f.submit "送信", class: "btn btn-md btn-success" %>
+    </div>
+
+<% end %>

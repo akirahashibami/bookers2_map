@@ -1,0 +1,18 @@
+<% if book.favorited_by?(current_user) %>
+  <%= link_to book_favorites_path(book), method: :delete, remote: true do %>
+  <i class="fas fa-heart" aria-hidden="true"></i>
+  <%= book.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to book_favorites_path(book), method: :post, remote: true do %>
+  <i class="far fa-heart" aria-hidden="true"></i>
+  <%= book.favorites.count %>
+  <% end %>
+<% end %>
+
+<!--
+いいねボタンのlink_toにremote: trueを追加します。
+通常であれば、link_toで呼ばれるアクションに対応するhtml.erbファイルを呼び出すところ、
+js.erbファイルを呼び出せるようになります。
+ページ遷移を行わず非同期で通信が行われるようになります。
+ -->

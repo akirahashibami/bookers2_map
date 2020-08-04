@@ -1,0 +1,49 @@
+<div class="row">
+
+  <% if @user_or_book == "book" %>
+
+  <h2>Books search for "<%= @word %>"</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @book.each do |book| %>
+      <tr>
+        <td><%= attachment_image_tag book.user, :profile_image, size: '40x40', format: 'jpeg' %></td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% else %>
+
+  <h2>Users search for "<%= @word %>"</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Index</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.each do |user| %>
+      <tr>
+        <td><%= attachment_image_tag user, :profile_image, size: '40x40', format: 'jpeg' %></td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <% end %>
+
+</div>
