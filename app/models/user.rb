@@ -65,9 +65,8 @@ class User < ApplicationRecord
 
   # geocoder
   def fruit_address
-    "%s %s"%([self.prefecture_code,self.address_city,self.address_street])
+    "%s %s %s"%([self.prefecture_code,self.address_city,self.address_street])
   end
-  #
   geocoded_by :fruit_address
   after_validation :geocode
 
