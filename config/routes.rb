@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'search' => 'search#search'
 
 
+  # google map ルーティング
+
+
   resources :users,only: [:show,:index,:edit,:update] do
     get 'users/follower' => 'users#follower'
     get 'users/followed' => 'users#followed'

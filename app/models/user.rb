@@ -63,6 +63,16 @@ class User < ApplicationRecord
     self.prefecure_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  # geocoder
+  def fruit_address
+    "%s %s"%([self.prefecture_code,self.address_city,self.address_street])
+  end
+  #
+  geocoded_by :fruit_address
+  after_validation :geocode
+
+  # :addressを登録した際にgeocoderが緯度、経度のカラムにも自動的に値を入れてくれるようになります。
+  # この記述がないとaddressを登録してもlatitude(緯度),longitude(経度)が登録されなくなってしまう(nillになる)ので注意です。
 
 
   attachment :profile_image, destroy: false
